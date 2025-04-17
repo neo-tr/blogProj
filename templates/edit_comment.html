@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Редактировать комментарий</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<header>
+    <h1>Редактирование комментария</h1>
+    <nav>
+        <a href="/">Главная</a> |
+        <a href="/logout">Выйти</a>
+    </nav>
+</header>
+<main>
+    <form action="/comment/{{ .comment.ID }}/edit" method="post">
+        <div>
+            <label for="content">Комментарий:</label>
+            <textarea id="content" name="content" rows="4" cols="50">{{ .comment.Content }}</textarea>
+        </div>
+        <button type="submit">Сохранить изменения</button>
+    </form>
+</main>
+<footer>
+    <p>&copy; 2025 Md-блог</p>
+</footer>
+</body>
+</html>

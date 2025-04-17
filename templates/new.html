@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Новый пост</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<header>
+    <h1>Создание нового поста</h1>
+    <nav>
+        <a href="/">Главная</a>
+    </nav>
+</header>
+<main>
+    <form action="/new" method="post">
+        <div>
+            <label for="title">Заголовок:</label><br>
+            <input type="text" id="title" name="title" required>
+        </div>
+        <div>
+            <label for="content">Содержание (Markdown):</label><br>
+            <textarea id="content" name="content" rows="10" cols="50" required></textarea>
+        </div>
+        <div>
+            <button type="submit">Создать пост</button>
+        </div>
+    </form>
+</main>
+<footer>
+    <p>&copy; 2025 Md-блог</p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Редактировать пост</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<header>
+    <h1>Редактирование поста</h1>
+    <nav>
+        <a href="/">Главная</a>
+    </nav>
+</header>
+<main>
+    <form action="/post/{{ .post.ID }}/edit" method="post">
+        <div>
+            <label for="title">Заголовок:</label>
+            <input type="text" id="title" name="title" value="{{ .post.Title }}" required>
+        </div>
+        <div>
+            <label for="content">Содержание (Markdown):</label>
+            <textarea id="content" name="content" rows="10" cols="50" required>{{ .post.Content }}</textarea>
+        </div>
+        <button type="submit">Сохранить изменения</button>
+    </form>
+</main>
+<footer>
+    <p>&copy; 2025 Md-блог</p>
+</footer>
+</body>
+</html>

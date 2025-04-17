@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Регистрация</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<header>
+    <h1>Регистрация</h1>
+    <nav>
+        <a href="/">Главная</a> | <a href="/login">Логин</a>
+    </nav>
+</header>
+<main>
+
+    {{ if .SuccessMessage }}
+    <script>alert("{{ .SuccessMessage }}")</script>
+    {{ end }}
+
+    <form action="/register" method="post">
+        <div>
+            <label for="username">Логин:</label>
+            <input type="text" id="username" name="username" required>
+        </div>
+        <div>
+            <label for="nickname">Ник:</label>
+            <input type="text" id="nickname" name="nickname" required>
+        </div>
+        <div>
+            <label for="password">Пароль:</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+        <button type="submit">Зарегистрироваться</button>
+    </form>
+</main>
+<footer>
+    <p>&copy; 2025 Md-блог</p>
+</footer>
+</body>
+</html>

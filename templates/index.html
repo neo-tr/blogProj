@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Мой Markdown-блог</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<header>
+    <h1>Добро пожаловать в мой блог</h1>
+    <nav>
+        <a href="/">Главная</a> |
+        <a href="/new">Новый пост</a> |
+        {{ if .username }}
+        <span>Привет, {{ .username }}!</span> |
+        <a href="/logout">Выйти</a>
+        {{ else }}
+        <a href="/register">Регистрация</a> |
+        <a href="/login">Логин</a>
+        {{ end }}
+    </nav>
+</header>
+
+<main>
+    {{ if .posts }}
+    <ul>
+        {{ range .posts }}
+        <li>
+            <a href="/post/{{ .ID }}">
+                <strong>{{ .Title }}</strong>
+            </a>
+            <br>
+            <small>Создан: {{ .CreatedAt | formatDate }}</small>
+        </li>
+        {{ end }}
+    </ul>
+    {{ else }}
+    <p>Постов пока нет. Создайте свой первый!</p>
+    {{ end }}
+</main>
+<footer>
+    <p>&copy; 2025 Md-блог</p>
+</footer>
+</body>
+</html>

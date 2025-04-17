@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ .post.Title }}</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<header>
+    <h1>{{ .post.Title }}</h1>
+    <nav>
+        <a href="/">Главная</a> |
+        {{ if .isAuthor }}
+        <a href="/post/{{ .post.ID }}/edit">Редактировать</a> |
+        {{ end }}
+        <a href="/logout">Выйти</a>
+    </nav>
+</header>
+<main>
+    <p><strong>Автор:</strong> {{ .post.AuthorNickname }}</p>
+    <div>
+        {{ .contentHTML | safeHTML }}
+    </div>
+    <p><small>Создан: {{ .post.CreatedAt | formatDate }}</small></p>
+    {{ if .post.UpdatedAt }}
+    <p><small>Отредактирован: {{ .post.UpdatedAt | formatDate }}</small></p>
+    {{ end }}
+
+    <hr>
+    <h2>Комментарии</h2>
+    {{ if .comments }}
+    <ul>
+        {{ range .comments }}
+        <li>
+            <p>{{ .Content }}</p>
+            <small>Комментарий оставлен {{ .CreatedAt | formatDate }} автор: {{ .AuthorNickname }}</small>
+
+            {{ if .Editable }}
+            <a href="/comment/{{ .ID }}/edit">Редактировать</a>
+            {{ end }}
+
+            {{ if .Editable }}
+            <form action="/comment/{{ .ID }}/delete" method="post" style="display:inline;">
+                <button type="submit" onclick="return confirm('Удалить комментарий?')">Удалить</button>
+            </form>
+            {{ end }}
+
+        </li>
+        {{ end }}
+    </ul>
+    {{ else }}
+    <p>Комментариев пока нет.</p>
+    {{ end }}
+
+    {{ if .username }}
+    <form action="/post/{{ .post.ID }}/comment" method="post">
+        <textarea name="content" rows="3" cols="50" placeholder="Ваш комментарий"></textarea><br>
+        <button type="submit">Добавить комментарий</button>
+    </form>
+    {{ else }}
+    <p><a href="/login">Войдите</a>, чтобы оставить комментарий.</p>
+    {{ end }}
+</main>
+<footer>
+    <p>&copy; 2025 Md-блог</p>
+</footer>
+</body>
+</html>
