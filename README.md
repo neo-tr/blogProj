@@ -13,7 +13,7 @@
 - Простая архитектура на Go + HTML шаблоны 
 
 - Пример главнгой страницы 
-![mainPage](imgForREADME/mainPage.jpg) 
+![mainPage](imgForREADME/mainPage.jpg)
 - Пример двух постов (изменение доступно только автору написанного поста или комментария) 
 
 | ![post1](imgForREADME/post1.jpg) | ![post2](imgForREADME/post2.jpg) |
