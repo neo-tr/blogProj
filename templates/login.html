@@ -13,14 +13,12 @@
     </nav>
 </header>
 <main>
-
     {{ if .SuccessMessage }}
-    <p class="success">{{ .SuccessMessage }}</p>
+        <p class="success">{{ .SuccessMessage }}</p>
     {{ end }}
     {{ if .ErrorMessage }}
-    <p class="error">{{ .ErrorMessage }}</p>
+        <p class="error">{{ .ErrorMessage }}</p>
     {{ end }}
-
     <form action="/login" method="post">
         <div>
             <label for="username">Логин:</label>
